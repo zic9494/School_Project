@@ -1,0 +1,11 @@
+body{
+    background: #3c3c3c;
+}
+h3, a {
+    color: #FFFFFF;
+}
+form {
+    position: relative;
+    width: 50.1%;
+    right: 0px;
+}

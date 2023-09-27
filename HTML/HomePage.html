@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<header>
+    <meta charset="utf-8">
+    <title>財務分析網頁</title>
+    <link rel="stylesheet" href="/CSS/HomePage.css">
+</header>
+<body>
+    
+    <button id="drawer">drawer</button>
+    <div id="user_info">
+        <label id="Name">{{ .Name }}</label><br>
+        <button>月</button><br>
+        <button>年</button><br>
+        <button>一生</button><br>
+        <button onclick="LogOut()">Log out</button><br>
+    </div>
+    <label id="Search"></label><button id="backward_month" onclick="month_move(-1)"><</button><button id="forward_month" onclick="month_move(1)">></button>
+    
+    <div id="Tables">
+        <table id="Payment_table" class="bill_table"></table>
+        <table id="Income_table" class="bill_table"></table>
+        <table id="Netassets_table" class="assets_table"></table>
+        <table id="Debt_table" class="assets_table"></table>
+        <table id="Assets_table" class="assets_table"></table>
+    </div>
+
+    <div id="Charts">
+        <button onclick="NetAsset_Chart()">淨資產累計圖</button>
+        <button onclick="Month_Payment()">本月支出配比</button>
+        <button onclick="Assets_Analyze()">資產分析圖</button><br>
+        <canvas id="ShowChart" width="400" height="100"></canvas>
+        <label id="in_debt" ><input id='debt_box' type="checkbox">含負債</label>
+        <canvas id="ShowChart2" width="400" height="100"></canvas><br>
+        <button id='BarandLine' onclick="change_Chart_type('bar', 'line')">長條圖與折折線圖</button>
+        <button  id='Pie' onclick="change_Chart_type('pie')">圓餅圖</button>
+    </div>
+    
+    <div id="write_bill">
+        <button id="close_form" onclick="FormChage()">X</button>
+        <button id="payment" onclick="FormChage('payment')">支出</button>
+        <button id="income"  onclick="FormChage('income')">收入</button>
+        <button id="dabt"  onclick="FormChage('debt')">借貸</button>
+        <button id="assets"  onclick="FormChage('assets')">資產轉移</button><br>
+        <form action="/bill/now" method="post" id="Form">
+            <input type="hidden" name="TargetId" value="">
+            <input id="ReturnType" type="hidden" value="payment" name="ReturnType">
+            <label class="assets">總值 : <br><input type="text" name="total_volue"><br></label>
+            <label class="assets">貨幣 : <br><input  list="currency" type="text" name="currencytype"></label>
+            <label class="assets">資產類型 : <br><input list="assets_type" type="text" name="assetstype"></label>
+            <label class="debt">本金 : <br><input type="text" name="principal"><br></label>
+            <label class="debt">年利率 : <br><input type="text" name="interest"> % <br></label>
+            <label class="debt">債權方 : <br><input type="text" name="attribute"><br></label>
+            <label class="debt">清償<input type="checkbox" name="settle"><br></label>
+            <label class="payment income">金額 : <br><input type="text" name="price"><br></label>
+            <label class="payment income">日期 : <br><input type="date" name="date"><br></label>
+            <label class="payment">支付目的 : <br><input list="payway" name="payway"><br></label>
+            <label id="content">內容:<br><textarea maxlength="50" rows="5" cols="33" name="content"></textarea></label>
+            <label id="delete_checkbox">刪除<input type="checkbox" name="delete" ><br></label>
+            <button id="submit">submit</button>
+        </form>
+        <datalist id="currency">
+            <option>TWD</option>
+            <option>USD</option>
+        </datalist>
+        <datalist id="assets_type">
+            <option>活存</option>
+            <option>定存</option>
+            <option>債券</option>
+            <option>股票</option>
+            <option>房地產</option>
+            <option>虛擬貨幣</option>
+        </datalist>
+        <datalist id="payway">
+            <option>日常開銷</option>
+            <option>娛樂開銷</option>
+            <option>固定支出</option>
+            <option>臨時開銷</option>
+        </datalist>
+    </div>
+
+    <form  action="/bill/now" method="post" id="settlement">
+        <input type="hidden" name="target_month" value="">
+        <!-- <button type="submit">本月結算</button> -->
+    </form>
+    <script src="/ChartJS/chart.umd.js"></script>
+    <script src="/JS/HomePage.js"></script>
+    <script src="/JS/Chart.js"></script>
+</body>

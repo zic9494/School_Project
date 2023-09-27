@@ -1,0 +1,99 @@
+body{
+    background: #3c3c3c;
+}
+label,h1 , h2, h3, th, table{
+    color: #FFFFFF;
+}
+
+table{
+    position: relative;
+    border-collapse: collapse;
+    width: 50.1%;
+    right: 0px;
+}
+tr{
+    border-bottom: 1px solid #ddd;
+}
+#user_info{
+    display : none;
+    background: #272727;
+    position: absolute;
+    top: 30px;
+    width: 10%;
+    height: 100%;
+}
+#write_bill{
+    position: absolute;
+    right: 0px;
+    top: 0%;
+    background: #272727;
+}
+#submit{
+    display: none;
+}
+#content{
+    display: none;
+}
+#delete_checkbox{
+    display: none;
+}
+#Index_Date{
+    position: relative;
+    left: 50%;
+    width: 50%;
+}
+#close_form{
+    display: none;
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    background: #272727;
+    color: #FFFFFF;
+}
+#backward_month{
+    position: absolute;
+    right :35%;
+    top:5%;
+    background: #272727;
+    color: #FFFFFF;
+}
+#Search{
+    position: absolute;
+    top: 5%;
+    right: 28.5%;
+}
+#forward_month{
+    position: absolute;
+    right :25%;
+    top:5%;
+    background: #272727;
+    color: #FFFFFF;
+}
+#Charts{
+    width: 500px;
+    height: 400px;
+}
+#ShowChart2{
+    display: none;
+}
+#in_debt{
+    display: none;
+}
+.bill_table{
+    float: right;
+}
+.assets_table{
+    float: right;
+}
+.debt{
+    display: none;
+}
+.payment{
+    display: none;
+}
+.assets{
+    display: none;
+}
+.income{
+    display: none;
+}
