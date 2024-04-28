@@ -202,7 +202,6 @@ function change_Chart_type(ChartType, ChartType2){
   }
   Show_Chart.type = ChartType
   ChartObject = new Chart(ctx, Show_Chart)
-  
   if (ChartType2 != undefined){
     if (ChartType2 != "pie"){
       Show_Chart["options"]["scales"]["y"]["display"] = true
