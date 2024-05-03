@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"time"
 
@@ -84,24 +85,62 @@ func Assets_Data(c *gin.Context) {
 	})
 }
 func NetAsset_Data(c *gin.Context) {
+	year := time.Now().Year()
+	month := time.Now().Month()
 	session := sessions.Default(c)
 	name := session.Get("UserInfo").(string)
 	User := User{}
 	User = User.Get_User_Data(name)
 	ID := User.ID()
-	rows, _ := db.Query("select id, month_netassets, month from netassets where who = ?", ID)
-	data := NetAsset{}
-	Content := []NetAsset{}
+	rows, _ := db.Query("SELECT price, date FROM `payment`where who = ? order by date DESC", ID)
+	data := Payment{}
+	Content := [][]Payment{}
+	i := -1
 	for rows.Next() {
-		err := rows.Scan(&data.Id, &data.Month_NetAssets, &data.Month)
+		err := rows.Scan(&data.Price, &data.Date)
+
 		if err != nil {
 			c.JSON(500, gin.H{
 				"Message": err,
 			})
 		}
-		Content = append(Content, data)
+
+		DataDate, _ := time.Parse("2006-01-02", data.Date)
+
+		if DataDate.Year() != year || DataDate.Month() != month {
+			fmt.Println(DataDate.Year(), DataDate.Month(), year, month)
+			for DataDate.Year() != year || DataDate.Month() != month {
+				if month == 1 {
+					year -= 1
+					month = 12
+				} else {
+					month -= 1
+				}
+			}
+			Content = append(Content, []Payment{})
+			i += 1
+		}
+		if i == -1 {
+			i += 1
+		}
+		Content[i] = append(Content[i], data)
+	}
+	i = 0
+	x := 0
+	var Date []string
+	Sum := []int{0}
+	for i < len(Content) {
+		for x < len(Content[i]) {
+			Sum[i] += Content[i][x].Price
+			x++
+		}
+		Sum = append(Sum, 0)
+		Date = append(Date, Content[i][0].Date[:7])
+		i++
+		x = 0
 	}
 	c.JSON(200, gin.H{
-		"Data": Content,
+		"Data": Sum,
+		"Date": Date,
 	})
 }
