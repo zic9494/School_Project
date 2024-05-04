@@ -275,16 +275,16 @@ function Show_Netassets_Data(){
     }else{
         var NetAssets_Table = document.getElementById("Netassets_table")
         var NetAssets_Data = NetAssest.Data
+        var NetAssets_Date = NetAssest.Date
         var NetAssets_Str = "<h2>Net Assets</h2><th>Balance</th><th>Month</th></tr>"
         var Tmp_Str = ""
         for (var i = 0;i < NetAssets_Data.length; i++){
-            var Month = NetAssets_Data[i].Month 
             Tmp_Str += "<tr><th>"
-            Tmp_Str += NetAssets_Data[i].Month_NetAssets+"</th><th>"
-            Tmp_Str += Month.substr(0, 7)+"</th>"
+            Tmp_Str += NetAssets_Data[i]+"</th><th>"
+            Tmp_Str += NetAssets_Date[i]+"</th>"
             NetAssets_Str += Tmp_Str
             Tmp_Str = ""
-            SumNetAssest += NetAssets_Data[i].Month_NetAssets
+            SumNetAssest += NetAssets_Data[i]
         }
         NetAssets_Table.innerHTML = NetAssets_Str
     }

@@ -54,7 +54,7 @@ function NetAsset_Chart(){
   document.getElementById("BarandLine").style.display = "none"
   document.getElementById("Pie").style.display = "none"
   var tmp = [], Dataset = [], labels=[], all_debt = 0, all_net = 0
-  var Cookie = Get_Cookie(), Data = NetAssest.Data
+  var Cookie = Get_Cookie(), Data = NetAssest.Data, Date = NetAssest.Date
   Table_change("bill_table", "assets_table")
   if (ChartObject != undefined){
     ChartObject.destroy()
@@ -71,9 +71,9 @@ function NetAsset_Chart(){
     }
   }
   for (var i = 0;i < Data.length ;i++){
-    tmp.push(Data[i]["Month_NetAssets"]-all_debt+all_net)
-    labels.push(Data[i]["Month"].slice(0, 7))
-    all_net += Data[i]["Month_NetAssets"]
+    tmp.push(Data[i]-all_debt+all_net)
+    labels.push(Date[i])
+    all_net += Data[i]
   }
   Dataset.push({
     label : "淨資產累計圖",
