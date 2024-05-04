@@ -39,8 +39,11 @@ drawer.addEventListener("click",function(){
     var user_info = document.getElementById("user_info")
     var user_info_display = window.getComputedStyle(user_info,"dispaly").getPropertyValue("display")
     if (user_info_display=="none"){
+        user_info.style.opacity = 1
+        document.body.style.opacity = 0.5
         user_info.style.display = "block"
     }else{
+        document.body.style.opacity = 1
         user_info.style.display = "none"
     }
 })
@@ -65,11 +68,26 @@ Settle_Check.addEventListener("click",event=>{
 })
 
 function month_move(move){
-    Get_Payment_data()
+    Search_Month += move 
+    switch(Search_Month){
+        case 0:
+            Search_Year--
+            Search_Month = 12
+            break
+        case 13:
+            Search_Year++
+            Search_Month = 1 
+            break
+    }
+    Get_Payment_data(Search_Year, Search_Month)
+    document.getElementById("Search").innerText = Search_Year+" / "+Search_Month
+    Payment = null
+    Check_Data_Is_Loaded()
 }
 
 function LogOut(){
-    window.location.replace("/user/logout")
+    document.cookie = "mysession = ''"
+    window.location.replace("/")
 }
 
 function FormChage(what, values, Index, ServerID){

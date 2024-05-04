@@ -42,7 +42,7 @@ var ctx = document.getElementById("ShowChart").getContext("2d")
 var ctx2 = document.getElementById("ShowChart2").getContext("2d")
 function Check_Data_Is_Loaded(){
   Assets_Table = document.getElementById("Assets_table").innerHTML
-  if (Assets == null){
+  if (Assets == null || Payment == null){
       setTimeout(()=>Check_Data_Is_Loaded(), 200)
     }else{
       Month_Payment()

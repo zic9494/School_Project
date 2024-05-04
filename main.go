@@ -34,8 +34,8 @@ func main() {
 	{
 		User.GET("/login", Login)
 		User.POST("/login", Login_Data)
-		User.GET("/sign-in", Peko)
-		User.POST("/sign-in", Peko)
+		User.GET("/signup", Peko)
+		User.POST("/signup", Peko)
 	}
 
 	Data := router.Group("data")
