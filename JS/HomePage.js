@@ -278,7 +278,7 @@ function Show_Netassets_Data(){
         var NetAssets_Date = NetAssest.Date
         var NetAssets_Str = "<h2>Net Assets</h2><th>Balance</th><th>Month</th></tr>"
         var Tmp_Str = ""
-        for (var i = 0;i < NetAssets_Data.length; i++){
+        for (var i = 0;i < NetAssets_Date.length; i++){
             Tmp_Str += "<tr><th>"
             Tmp_Str += NetAssets_Data[i]+"</th><th>"
             Tmp_Str += NetAssets_Date[i]+"</th>"
