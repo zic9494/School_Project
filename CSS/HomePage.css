@@ -4,7 +4,6 @@ body{
 label,h1 , h2, h3, th, table{
     color: #FFFFFF;
 }
-
 table{
     position: relative;
     border-collapse: collapse;
@@ -62,6 +61,9 @@ tr{
     top: 5%;
     right: 28.5%;
 }
+#Payment_table{
+    top :25px
+}
 #forward_month{
     position: absolute;
     right :25%;
@@ -78,6 +80,9 @@ tr{
 }
 #in_debt{
     display: none;
+}
+.change_time{
+    position: relative;
 }
 .bill_table{
     float: right;

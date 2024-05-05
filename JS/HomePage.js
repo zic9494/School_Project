@@ -68,6 +68,7 @@ Settle_Check.addEventListener("click",event=>{
 })
 
 function month_move(move){
+    console.log("Peko");
     Search_Month += move 
     switch(Search_Month){
         case 0:
@@ -131,7 +132,6 @@ function DispalyChange(elem, Into){
 
 function Get_Payment_data(year, month){
     var url = "/data/payment?year="+year+"&month="+month
-    console.log(url);
     var link_payment = new XMLHttpRequest
     link_payment.open("GET",url)
     link_payment.send()
@@ -140,7 +140,7 @@ function Get_Payment_data(year, month){
     }
     document.getElementById("Payment_table").innerHTML = "Loading"
     setTimeout(()=>Stop_Loading(Payment,  "Payment"),500)
-    document.getElementById("Income_table").innerHTML = "Loading"
+    document.getElementById("Income_table").innerHTML = ""
     setTimeout(()=>Stop_Loading(Payment, "Payment"),500)
 }
 
@@ -151,7 +151,7 @@ function Get_Debt_Data(){
     link_debt.onload =function(){
         Debt = JSON.parse(link_debt.responseText) 
     }
-    document.getElementById("Debt_table").innerHTML = "Loading"
+    document.getElementById("Debt_table").innerHTML = ""
     setTimeout(()=>Stop_Loading(Debt, "Debt"),500)
 }
 
@@ -162,7 +162,7 @@ function Get_Assets_Data(){
     link_assets.onload = function (){
         Assets = JSON.parse(link_assets.responseText)
     }
-    document.getElementById("Assets_table").innerHTML="Loading"
+    document.getElementById("Assets_table").innerHTML=""
     setTimeout(()=>{Stop_Loading(Assets, "Assets")}, 500)
 }
 
