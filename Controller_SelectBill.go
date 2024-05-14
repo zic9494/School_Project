@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 	"time"
 
@@ -108,7 +107,6 @@ func NetAsset_Data(c *gin.Context) {
 		DataDate, _ := time.Parse("2006-01-02", data.Date)
 
 		if DataDate.Year() != year || DataDate.Month() != month {
-			fmt.Println(DataDate.Year(), DataDate.Month(), year, month)
 			for DataDate.Year() != year || DataDate.Month() != month {
 				if month == 1 {
 					year -= 1

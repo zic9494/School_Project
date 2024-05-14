@@ -39,11 +39,8 @@ drawer.addEventListener("click",function(){
     var user_info = document.getElementById("user_info")
     var user_info_display = window.getComputedStyle(user_info,"dispaly").getPropertyValue("display")
     if (user_info_display=="none"){
-        user_info.style.opacity = 1
-        document.body.style.opacity = 0.5
         user_info.style.display = "block"
     }else{
-        document.body.style.opacity = 1
         user_info.style.display = "none"
     }
 })
@@ -68,7 +65,6 @@ Settle_Check.addEventListener("click",event=>{
 })
 
 function month_move(move){
-    console.log("Peko");
     Search_Month += move 
     switch(Search_Month){
         case 0:

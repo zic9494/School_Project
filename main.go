@@ -34,7 +34,7 @@ func main() {
 	{
 		User.GET("/login", Login)
 		User.POST("/login", Login_Data)
-		User.GET("/signup", Peko)
+		User.GET("/signup", Signup)
 		User.POST("/signup", Peko)
 	}
 
