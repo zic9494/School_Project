@@ -7,19 +7,19 @@
 <body>
     <h4 style="display: none;color: red;" id="password_not_same">驗證密碼輸入不同</h4>
     <form action="/user/signup" method="post">
-        <h3>UserName</h3>
+        <h3>Account</h3>
         <input type='text' name="name" size="20"><br>
         <h3>Password</h3>
         <input type="password" name="password" size="20" id="password"><br>
         <h3>Write Password Again</h3>
         <input type="password" name="repassword" size="20" id="repassword"><br>
         <h3>帳號用途</h3>
-        <input list="account_type" size="15"><br><br>
+        <input list="account_type" name="user_type" size="15"><br><br>
         <button type="button" id="SubmitBtn">submit</button>
     </form>
     <datalist id="account_type">
         <option>normal</option>
-        <option>share</option>
+        <option>mutual</option>
     </datalist>
     <script>
         var repassword = document.getElementById("repassword")
